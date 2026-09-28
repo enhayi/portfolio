@@ -436,9 +436,17 @@
 
         <!-- CARD 5: LIVE ORDER BOOK MICRO-LAB WIDGET (Spans 2 cols on lg) -->
         <div class="glow-card rounded-xl p-6 lg:col-span-2">
-          <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-800">
+          <div class="flex items-center justify-between pb-3 mb-2 border-b border-slate-800 flex-wrap gap-2">
             <span class="text-xs font-mono text-cyan-400 font-semibold tracking-wider">LIVE MICROSTRUCTURE LAB: L2 ORDER BOOK</span>
-            <span class="text-[10px] font-mono text-emerald-400">INTERACTIVE WIDGET</span>
+            <div class="flex items-center space-x-2">
+              <button data-preview-url="https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/?embed=true" data-preview-title="Limit Order Book Deep Learning Predictor" class="btn-live-preview px-2 py-0.5 rounded bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 font-mono text-[10px] font-semibold transition-all">
+                Quick Preview
+              </button>
+              <a href="https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/" target="_blank" rel="noreferrer" class="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-black font-mono text-[10px] font-semibold border border-emerald-500/30 transition-all">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Streamlit App ↗</span>
+              </a>
+            </div>
           </div>
           <!-- LOB Visualizer Container injected by app.js -->
           <div id="lob-visualizer" class="w-full"></div>
@@ -695,11 +703,20 @@
               </div>
 
               <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 z-20">
-                <button data-project="lob" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-mono text-xs font-bold transition-all">
-                  Explore Math & Pipeline
+              <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-2 z-20 px-3">
+                <a href="https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/" target="_blank" rel="noreferrer" class="px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all shadow-lg shadow-emerald-500/25 flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                  <span>Live App</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+                <button data-preview-url="https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/?embed=true" data-preview-title="Limit Order Book Deep Learning Predictor" class="btn-live-preview px-3 py-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 font-mono text-xs font-semibold transition-all flex items-center space-x-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  <span>Quick Preview</span>
                 </button>
-                <a href="https://github.com/enhayi/lob-deep-learning-predictor" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
+                <button data-project="lob" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 transition-all" title="Explore Math & Architecture">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </button>
+                <a href="https://github.com/enhayi/lob-deep-learning-predictor" target="_blank" rel="noreferrer" title="GitHub Repository" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                 </a>
               </div>
@@ -731,10 +748,17 @@
               <span>View Mathematical Model &amp; Code</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
-            <a href="https://github.com/enhayi/lob-deep-learning-predictor" target="_blank" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
-              <span>GitHub</span>
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </a>
+            <div class="flex items-center space-x-3">
+              <a href="https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/" target="_blank" rel="noreferrer" class="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center space-x-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Live App</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <a href="https://github.com/enhayi/lob-deep-learning-predictor" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
+                <span>GitHub</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -746,14 +770,20 @@
               <div class="absolute inset-0 bg-gradient-to-t from-[#121620] via-transparent to-transparent"></div>
 
               <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 z-20">
-                <a href="https://portfolio-optimizer-wbtrwczmmhwxphwjykrut4.streamlit.app/" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all">
-                  Launch Live App
+              <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-2 z-20 px-3">
+                <a href="https://portfolio-optimizer-wbtrwczmmhwxphwjykrut4.streamlit.app/" target="_blank" rel="noreferrer" class="px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all shadow-lg shadow-emerald-500/25 flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                  <span>Live App</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
-                <button data-project="optimizer" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs font-semibold transition-all">
-                  View Math Model
+                <button data-preview-url="https://portfolio-optimizer-wbtrwczmmhwxphwjykrut4.streamlit.app/?embed=true" data-preview-title="Portfolio Optimizer (Mean-Variance MPT)" class="btn-live-preview px-3 py-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 font-mono text-xs font-semibold transition-all flex items-center space-x-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  <span>Quick Preview</span>
                 </button>
-                <a href="https://github.com/enhayi/portfolio-optimizer" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
+                <button data-project="optimizer" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 transition-all" title="View Mathematical Model">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </button>
+                <a href="https://github.com/enhayi/portfolio-optimizer" target="_blank" rel="noreferrer" title="GitHub Repository" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                 </a>
               </div>
@@ -783,7 +813,7 @@
               <span>View Mathematical Model</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
-            <a href="https://portfolio-optimizer-wbtrwczmmhwxphwjykrut4.streamlit.app/" target="_blank" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
+            <a href="https://portfolio-optimizer-wbtrwczmmhwxphwjykrut4.streamlit.app/" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
               <span>Live App</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
@@ -798,14 +828,20 @@
               <div class="absolute inset-0 bg-gradient-to-t from-[#121620] via-transparent to-transparent"></div>
 
               <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 z-20">
-                <a href="https://hft-simulation-f6uvqnzvcnja5n3cqogwcz.streamlit.app/" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all">
-                  Launch Live App
+              <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-2 z-20 px-3">
+                <a href="https://hft-simulation-f6uvqnzvcnja5n3cqogwcz.streamlit.app/" target="_blank" rel="noreferrer" class="px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all shadow-lg shadow-emerald-500/25 flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                  <span>Live App</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
-                <button data-project="hft" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs font-semibold transition-all">
-                  View Backtester Math
+                <button data-preview-url="https://hft-simulation-f6uvqnzvcnja5n3cqogwcz.streamlit.app/?embed=true" data-preview-title="High-Frequency Trading Simulator" class="btn-live-preview px-3 py-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 font-mono text-xs font-semibold transition-all flex items-center space-x-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  <span>Quick Preview</span>
                 </button>
-                <a href="https://github.com/enhayi/HFT-simulation" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
+                <button data-project="hft" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 transition-all" title="View Backtester Math">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </button>
+                <a href="https://github.com/enhayi/HFT-simulation" target="_blank" rel="noreferrer" title="GitHub Repository" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                 </a>
               </div>
@@ -835,7 +871,7 @@
               <span>View Backtester Topology</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </button>
-            <a href="https://hft-simulation-f6uvqnzvcnja5n3cqogwcz.streamlit.app/" target="_blank" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
+            <a href="https://hft-simulation-f6uvqnzvcnja5n3cqogwcz.streamlit.app/" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white inline-flex items-center space-x-1">
               <span>Live App</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
@@ -850,14 +886,20 @@
               <div class="absolute inset-0 bg-gradient-to-t from-[#121620] via-transparent to-transparent"></div>
 
               <!-- Hover Overlay -->
-              <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3 z-20">
-                <a href="https://montecarlo-optionpricing-i6w29bdadjxkffb5mzrkke.streamlit.app/" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all">
-                  Launch Live App
+              <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-2 z-20 px-3">
+                <a href="https://montecarlo-optionpricing-i6w29bdadjxkffb5mzrkke.streamlit.app/" target="_blank" rel="noreferrer" class="px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-all shadow-lg shadow-emerald-500/25 flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                  <span>Live App</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
-                <button data-project="mc" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs font-semibold transition-all">
-                  View Stochastic Model
+                <button data-preview-url="https://montecarlo-optionpricing-i6w29bdadjxkffb5mzrkke.streamlit.app/?embed=true" data-preview-title="Monte Carlo Asian Option Pricing" class="btn-live-preview px-3 py-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 font-mono text-xs font-semibold transition-all flex items-center space-x-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  <span>Quick Preview</span>
                 </button>
-                <a href="https://github.com/enhayi/MonteCarlo-optionPricing" target="_blank" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
+                <button data-project="mc" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 transition-all" title="View Stochastic Model">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                </button>
+                <a href="https://github.com/enhayi/MonteCarlo-optionPricing" target="_blank" rel="noreferrer" title="GitHub Repository" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-all">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                 </a>
               </div>
@@ -1160,6 +1202,46 @@
 
       <!-- Modal Body (Injected by JavaScript) -->
       <div id="modal-body" class="p-6 sm:p-8"></div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       LIVE APP PREVIEW MODAL (Streamlit Embedded Iframe Viewer)
+       ======================================================================== -->
+  <div id="app-preview-modal" class="fixed inset-0 z-50 modal-backdrop bg-black/85 flex items-center justify-center p-2 sm:p-6 hidden">
+    <div class="relative w-full max-w-6xl h-[92vh] bg-[#0c1017] border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+      
+      <!-- Preview Header Bar -->
+      <div class="bg-[#0f1420] px-4 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+          </div>
+          <span id="preview-modal-title" class="text-xs font-mono text-slate-300 font-semibold truncate max-w-md">Live Streamlit Preview</span>
+        </div>
+
+        <div class="flex items-center space-x-2 font-mono text-xs">
+          <a id="preview-external-link" href="#" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded bg-emerald-500 hover:bg-emerald-400 text-black font-bold flex items-center space-x-1.5 transition-colors">
+            <span>Open in Full Tab</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <button id="preview-close-btn" class="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" aria-label="Close Preview">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Iframe Container -->
+      <div class="flex-1 bg-[#090d14] relative">
+        <div id="preview-loader" class="absolute inset-0 flex flex-col items-center justify-center space-y-3 bg-[#0a0d14] z-10 transition-opacity duration-300">
+          <div class="w-8 h-8 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
+          <div class="text-xs font-mono text-slate-400">CONNECTING TO STREAMLIT CLUSTER...</div>
+        </div>
+        <iframe id="preview-iframe" src="" class="w-full h-full border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
 
     </div>
   </div>

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMonteCarloSimulator();
   initPortfolioSlider();
   initModals();
+  initLivePreviewModal();
   initTerminal();
   initNavigation();
   renderAllMath();
@@ -483,6 +484,7 @@ const projectData = {
     title: "Limit Order Book (LOB) Deep Learning Predictor",
     subtitle: "High-Frequency Microstructural Signal Generation with PyTorch & Dedicated GPU Acceleration",
     tags: ["Python", "PyTorch", "Linux / WSL2", "CUDA 12.6", "L2 Order Book", "Financial Microstructure"],
+    live: "https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/",
     github: "https://github.com/enhayi/lob-deep-learning-predictor",
     overview: `
       Architected an end-to-end, hardware-accelerated deep learning pipeline in PyTorch designed to forecast short-term mid-price movements from high-frequency Level-2 Limit Order Book (LOB) tick data. 
@@ -851,6 +853,64 @@ function renderProjectModal(data, container) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* 6.1. Live Streamlit App Preview Modal                                       */
+/* -------------------------------------------------------------------------- */
+function initLivePreviewModal() {
+  const modal = document.getElementById('app-preview-modal');
+  const closeBtn = document.getElementById('preview-close-btn');
+  const iframe = document.getElementById('preview-iframe');
+  const loader = document.getElementById('preview-loader');
+  const titleEl = document.getElementById('preview-modal-title');
+  const extLink = document.getElementById('preview-external-link');
+
+  if (!modal || !closeBtn || !iframe) return;
+
+  function closePreview() {
+    modal.classList.add('hidden');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closePreview);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closePreview();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closePreview();
+  });
+
+  document.querySelectorAll('.btn-live-preview').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const embedUrl = btn.getAttribute('data-preview-url');
+      const title = btn.getAttribute('data-preview-title') || 'Live Streamlit Application';
+      if (!embedUrl) return;
+
+      const directUrl = embedUrl.replace('?embed=true', '');
+      if (titleEl) titleEl.textContent = title;
+      if (extLink) extLink.href = directUrl;
+
+      if (loader) {
+        loader.classList.remove('opacity-0', 'pointer-events-none');
+        loader.classList.add('opacity-100');
+      }
+
+      iframe.src = embedUrl;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      iframe.onload = () => {
+        if (loader) {
+          loader.classList.add('opacity-0', 'pointer-events-none');
+          loader.classList.remove('opacity-100');
+        }
+      };
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------- */
 /* 7. KaTeX Auto-Renderer                                                      */
 /* -------------------------------------------------------------------------- */
 function renderAllMath() {
@@ -977,7 +1037,14 @@ function initTerminal() {
 
         switch (cmd) {
           case 'help':
-            log("Available commands: cv, skills, projects, status, clear, contact, date, ping", "info");
+            log("Available commands: cv, skills, projects, lob, status, clear, contact, date, ping", "info");
+            break;
+
+          case 'lob':
+          case 'preview':
+          case 'demo':
+            log("Connecting to LOB Deep Learning Predictor Streamlit cluster...", "success");
+            window.open('https://lob-deep-learning-predictor-aesbyklvshkmmdvtx3qwnz.streamlit.app/', '_blank');
             break;
 
           case 'cv':
