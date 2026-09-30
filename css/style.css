@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Tarik Akarli Portfolio — Elena Gonci (elenagonci.com) Spatial Desktop System
-   Aesthetic: Modern Spatial macOS Desktop / High-End Glassmorphism
+   Tarik Akarli Portfolio — Elena Gonci Spatial Desktop System
+   Theme: Institutional Fintech / Dark Mode Native
    Featuring: Floating Interactive Widgets, Apple-style Dock, Folder Tab Stacks,
               Achievement Squircles, and Continuous Marquee Track.
    ========================================================================== */
 
 :root {
-  --bg-page: #fafafa;
-  --bg-card: #ffffff;
-  --bg-card-glass: rgba(255, 255, 255, 0.72);
-  --border-glass: rgba(255, 255, 255, 0.85);
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --text-primary: #111827;
-  --text-secondary: rgba(0, 0, 0, 0.6);
-  --text-muted: rgba(0, 0, 0, 0.4);
+  --bg-page: #0a0d14;
+  --bg-card: #111726;
+  --bg-card-glass: rgba(17, 23, 38, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.4);
 
   --accent-cyan: #06b6d4;
   --accent-blue: #2563eb;
@@ -26,20 +26,21 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Dark mode overrides */
-html.dark {
-  --bg-page: #0a0d14;
-  --bg-card: #111726;
-  --bg-card-glass: rgba(17, 23, 38, 0.75);
-  --border-glass: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --text-primary: #f8fafc;
-  --text-secondary: rgba(255, 255, 255, 0.65);
-  --text-muted: rgba(255, 255, 255, 0.4);
+/* Light mode overrides (only active if user explicitly toggles theme) */
+html.light {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-glass: rgba(255, 255, 255, 0.8);
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --text-primary: #0f172a;
+  --text-secondary: rgba(15, 23, 42, 0.7);
+  --text-muted: rgba(15, 23, 42, 0.45);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #0a0d14;
 }
 
 body {
@@ -59,14 +60,14 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 9999px;
 }
-html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ==========================================================================
@@ -78,31 +79,32 @@ html.dark ::-webkit-scrollbar-thumb {
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid var(--border-glass);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.75),
-    0 10px 30px -5px rgba(0, 0, 0, 0.06);
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 12px 36px -5px rgba(0, 0, 0, 0.45);
   border-radius: 1.25rem;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
-html.dark .glass-widget {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+html.light .glass-widget {
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
-    0 12px 36px -5px rgba(0, 0, 0, 0.45);
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 10px 30px -5px rgba(0, 0, 0, 0.06);
 }
 
 .glass-widget:hover {
   transform: translateY(-3px);
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.8),
-    0 18px 40px -8px rgba(0, 0, 0, 0.12);
-}
-
-html.dark .glass-widget:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.16);
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.12),
     0 20px 45px -8px rgba(0, 0, 0, 0.65);
+}
+
+html.light .glass-widget:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 18px 40px -8px rgba(0, 0, 0, 0.12);
 }
 
 /* ==========================================================================
@@ -126,23 +128,22 @@ html.dark .glass-widget:hover {
   align-items: center;
   gap: 0.65rem;
   padding: 0.5rem 0.75rem;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(17, 23, 38, 0.8);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 1.35rem;
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.9),
-    0 14px 40px -10px rgba(0, 0, 0, 0.18),
-    0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-html.dark .floating-dock {
-  background: rgba(17, 23, 38, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.35rem;
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.15),
     0 18px 45px -8px rgba(0, 0, 0, 0.6);
+}
+
+html.light .floating-dock {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 14px 40px -10px rgba(0, 0, 0, 0.18);
 }
 
 .dock-icon-btn {
@@ -154,12 +155,12 @@ html.dark .floating-dock {
   justify-content: center;
   border-radius: 24%;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dock-icon-btn:hover {
   transform: scale(1.18) translateY(-4px);
-  filter: brightness(1.08);
+  filter: brightness(1.1);
 }
 
 .dock-icon-btn:active {
@@ -169,12 +170,37 @@ html.dark .floating-dock {
 .dock-divider {
   width: 1px;
   height: 26px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   margin: 0 0.15rem;
 }
 
-html.dark .dock-divider {
-  background: rgba(255, 255, 255, 0.15);
+html.light .dock-divider {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile adjustments for dock */
+@media (max-width: 640px) {
+  .floating-dock-container {
+    bottom: 0.75rem;
+    padding: 0 0.5rem;
+  }
+  .floating-dock {
+    gap: 0.35rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 1.1rem;
+    max-width: 96vw;
+  }
+  .dock-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .dock-icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .dock-divider {
+    height: 20px;
+  }
 }
 
 /* ==========================================================================
@@ -194,30 +220,30 @@ html.dark .dock-divider {
 
 .desktop-folder-item:hover {
   transform: translateY(-2px);
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-html.dark .desktop-folder-item:hover {
-  background-color: rgba(255, 255, 255, 0.04);
+html.light .desktop-folder-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .desktop-folder-badge {
   padding: 0.15rem 0.5rem;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(30, 41, 59, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 6px;
   font-size: 11px;
   font-weight: 600;
-  color: #111827;
+  color: #f1f5f9;
   text-align: center;
   line-height: 1.2;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-html.dark .desktop-folder-badge {
-  background: rgba(30, 41, 59, 0.85);
-  color: #f1f5f9;
+html.light .desktop-folder-badge {
+  background: rgba(255, 255, 255, 0.85);
+  color: #111827;
 }
 
 .desktop-folder-item:hover .desktop-folder-badge {
@@ -248,48 +274,46 @@ html.dark .desktop-folder-badge {
    ========================================================================== */
 .folder-tab-header {
   position: relative;
-  height: 44px;
+  height: 40px;
   width: 100%;
+  margin-bottom: -1px;
+  z-index: 10;
 }
 
 .folder-tab-curve {
   display: inline-flex;
   align-items: center;
-  height: 44px;
+  height: 40px;
   padding: 0 1.5rem;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1.25rem;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+  border-top-left-radius: 0.85rem;
+  border-top-right-radius: 1.15rem;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .folder-card {
+  position: relative;
   background: var(--bg-card-glass);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border: 1px solid var(--border-glass);
+  border-top-left-radius: 0;
   border-top-right-radius: 1.25rem;
   border-bottom-left-radius: 1.25rem;
   border-bottom-right-radius: 1.25rem;
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.75),
-    0 14px 40px -8px rgba(0, 0, 0, 0.08);
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 16px 45px -8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-html.dark .folder-card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+html.light .folder-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.08),
-    0 16px 45px -8px rgba(0, 0, 0, 0.5);
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 14px 40px -8px rgba(0, 0, 0, 0.08);
 }
 
 .folder-card:hover {
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.85),
-    0 20px 48px -10px rgba(0, 0, 0, 0.14);
-}
-
-html.dark .folder-card:hover {
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.12),
     0 24px 50px -10px rgba(0, 0, 0, 0.7);
@@ -306,8 +330,8 @@ html.dark .folder-card:hover {
   align-items: center;
   justify-content: center;
   box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    0 6px 16px rgba(0, 0, 0, 0.14);
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    0 6px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -322,20 +346,20 @@ html.dark .folder-card:hover {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 2px solid var(--border-subtle);
+  border: 2px solid rgba(255, 255, 255, 0.12);
   position: relative;
-  background: radial-gradient(circle, var(--bg-card) 60%, rgba(0, 0, 0, 0.03) 100%);
+  background: radial-gradient(circle, #151d30 60%, #0d1220 100%);
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+html.light .clock-face {
+  background: radial-gradient(circle, #ffffff 60%, #f1f5f9 100%);
+  border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 
     inset 0 2px 6px rgba(0, 0, 0, 0.06),
     0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-html.dark .clock-face {
-  background: radial-gradient(circle, #151d30 60%, #0d1220 100%);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    inset 0 2px 6px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .clock-center-dot {

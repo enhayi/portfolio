@@ -34,18 +34,25 @@ function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
   const root = document.documentElement;
 
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      root.classList.remove('dark');
+      root.classList.add('light');
+    } else {
+      root.classList.add('dark');
+      root.classList.remove('light');
+    }
+  }
+
   // Retrieve saved preference or default to dark
   const savedTheme = localStorage.getItem('ta_portfolio_theme') || 'dark';
-  if (savedTheme === 'dark') {
-    root.classList.add('dark');
-  } else {
-    root.classList.remove('dark');
-  }
+  applyTheme(savedTheme);
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const isDark = root.classList.toggle('dark');
-      localStorage.setItem('ta_portfolio_theme', isDark ? 'dark' : 'light');
+      const nextTheme = root.classList.contains('light') ? 'dark' : 'light';
+      applyTheme(nextTheme);
+      localStorage.setItem('ta_portfolio_theme', nextTheme);
     });
   }
 }

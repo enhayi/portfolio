@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +15,22 @@
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Immediate Theme Initializer to prevent White Flash of Unstyled Content -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('ta_portfolio_theme');
+        if (saved === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -59,11 +75,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" />
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
 
-  <!-- Custom Stylesheet (Elena Gonci Spatial Aesthetic) -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Custom Stylesheet (Elena Gonci Spatial Aesthetic) with Cache Buster -->
+  <link rel="stylesheet" href="css/style.css?v=3.2" />
 </head>
 
-<body class="selection:bg-cyan-500/30 selection:text-black dark:selection:text-white transition-colors duration-300">
+<body class="bg-[#0a0d14] text-slate-100 font-sans antialiased selection:bg-cyan-500/30 selection:text-white pb-28 transition-colors duration-300">
 
   <!-- ========================================================================= -->
   <!-- 1. TOP macOS SYSTEM STATUS BAR                                            -->
@@ -190,13 +206,13 @@
   <!-- ========================================================================= -->
   <!-- 3. HERO SPATIAL DESKTOP SECTION (Elena Gonci Inspired)                   -->
   <!-- ========================================================================= -->
-  <section id="hero" class="relative min-h-[92vh] pt-16 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-between overflow-hidden">
+  <section id="hero" class="relative pt-8 sm:pt-12 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col gap-10 sm:gap-12 overflow-hidden">
     
     <!-- Subtle Background Dot Grid -->
     <div class="absolute inset-0 -z-10 bg-[radial-gradient(#d1d5db_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
 
     <!-- MAIN EDITORIAL HEADLINE -->
-    <div class="mt-6 sm:mt-10 max-w-4xl">
+    <div class="max-w-4xl">
       <!-- Sub-badge -->
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200/80 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/80 backdrop-blur-md text-xs font-mono mb-6 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
@@ -245,7 +261,7 @@
     </div>
 
     <!-- SPATIAL FLOATING DESKTOP WIDGETS GRID (Elena Gonci layout) -->
-    <div class="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       
       <!-- WIDGET 1: Interactive Analog Clock (Elena Gonci signature) -->
       <div class="glass-widget p-5 flex flex-col justify-between">
@@ -441,7 +457,7 @@
   <!-- ========================================================================= -->
   <!-- 5. FOUNDER SPOTLIGHT: SYNTROPIC LABS                                      -->
   <!-- ========================================================================= -->
-  <section id="syntropic-labs" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
+  <section id="syntropic-labs" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
     
     <!-- Section Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -561,7 +577,7 @@
   <!-- ========================================================================= -->
   <!-- 6. ACHIEVEMENTS & CREDENTIALS (Elena Gonci Squircle Cards)               -->
   <!-- ========================================================================= -->
-  <section id="achievements" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
+  <section id="achievements" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
     <div class="mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-mono font-semibold mb-3">
         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
@@ -689,7 +705,7 @@
   <!-- ========================================================================= -->
   <!-- 7. PROJECT SHOWCASE: ELENA GONCI FOLDER-TAB STACK ARCHITECTURE            -->
   <!-- ========================================================================= -->
-  <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
+  <section id="projects" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
     <div class="mb-12">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 text-xs font-mono font-semibold mb-3">
         <span class="w-2 h-2 rounded-full bg-violet-500"></span>
@@ -1082,7 +1098,7 @@
   <!-- ========================================================================= -->
   <!-- 8. EXPERIENCE & EDUCATION TIMELINE (Updated strictly with CV details)     -->
   <!-- ========================================================================= -->
-  <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-16">
+  <section id="experience" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto scroll-mt-16">
     <div class="mb-12">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold mb-3">
         <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
@@ -1233,7 +1249,7 @@
   <!-- ========================================================================= -->
   <!-- 9. TERMINAL CONTACT & CLI WINDOW (PRD Specification)                     -->
   <!-- ========================================================================= -->
-  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-16">
+  <section id="contact" class="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-16">
     <div class="mb-10 text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold mb-3">
         <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
@@ -1402,7 +1418,7 @@
     </div>
   </footer>
 
-  <!-- Main JavaScript Application Engine -->
-  <script src="js/app.js"></script>
+  <!-- Main JavaScript Application Engine (with Cache Buster) -->
+  <script src="js/app.js?v=3.2"></script>
 </body>
 </html>
