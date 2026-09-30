@@ -1,264 +1,409 @@
 /* ==========================================================================
-   Tarik Akarli - Quantitative Engineering & Research Portfolio
-   Theme: Institutional Fintech / Dark Mode Native
-   Aesthetic: Bloomberg Terminal / High-Frequency Trading Desk
+   Tarik Akarli Portfolio — Elena Gonci (elenagonci.com) Spatial Desktop System
+   Aesthetic: Modern Spatial macOS Desktop / High-End Glassmorphism
+   Featuring: Floating Interactive Widgets, Apple-style Dock, Folder Tab Stacks,
+              Achievement Squircles, and Continuous Marquee Track.
    ========================================================================== */
 
 :root {
-  --bg-primary: #08090b;
-  --bg-secondary: #0e1117;
-  --bg-card: #121620;
-  --bg-card-hover: #182030;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 240, 255, 0.25);
-  
-  --accent-blue: #00f0ff;
-  --accent-cyan: #38bdf8;
-  --accent-green: #10b981;
-  --accent-emerald: #00ff88;
+  --bg-page: #fafafa;
+  --bg-card: #ffffff;
+  --bg-card-glass: rgba(255, 255, 255, 0.72);
+  --border-glass: rgba(255, 255, 255, 0.85);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --text-primary: #111827;
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-muted: rgba(0, 0, 0, 0.4);
+
+  --accent-cyan: #06b6d4;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
   --accent-amber: #f59e0b;
-  --accent-red: #ef4444;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Dark mode overrides */
+html.dark {
+  --bg-page: #0a0d14;
+  --bg-card: #111726;
+  --bg-card-glass: rgba(17, 23, 38, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.4);
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: #f1f5f9;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  selection-background-color: #00f0ff;
-  selection-color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-::selection {
-  background: rgba(0, 240, 255, 0.3);
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+/* ==========================================================================
+   Elena Gonci Signature Glassmorphism Panels & Widgets
+   ========================================================================== */
+.glass-widget {
+  background: var(--bg-card-glass);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    0 10px 30px -5px rgba(0, 0, 0, 0.06);
+  border-radius: 1.25rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+html.dark .glass-widget {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 12px 36px -5px rgba(0, 0, 0, 0.45);
+}
+
+.glass-widget:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 18px 40px -8px rgba(0, 0, 0, 0.12);
+}
+
+html.dark .glass-widget:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    0 20px 45px -8px rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================================================================
+   Elena Gonci Floating Dock (Pinned at Bottom with Squircle Icons)
+   ========================================================================== */
+.floating-dock-container {
+  pointer-events: none;
+  position: fixed;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.floating-dock {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 1.35rem;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    0 14px 40px -10px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .floating-dock {
+  background: rgba(17, 23, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 18px 45px -8px rgba(0, 0, 0, 0.6);
+}
+
+.dock-icon-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24%;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dock-icon-btn:hover {
+  transform: scale(1.18) translateY(-4px);
+  filter: brightness(1.08);
+}
+
+.dock-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.dock-divider {
+  width: 1px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0.15);
+  margin: 0 0.15rem;
+}
+
+html.dark .dock-divider {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   macOS Desktop Folder Icons
+   ========================================================================== */
+.desktop-folder-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, background-color 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.desktop-folder-item:hover {
+  transform: translateY(-2px);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+html.dark .desktop-folder-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.desktop-folder-badge {
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+html.dark .desktop-folder-badge {
+  background: rgba(30, 41, 59, 0.85);
+  color: #f1f5f9;
+}
+
+.desktop-folder-item:hover .desktop-folder-badge {
+  background: #0284c7;
   color: #ffffff;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #08090b;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+/* ==========================================================================
+   Continuous Marquee Track (matching elenagonci.com)
+   ========================================================================== */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Terminal & Monospace Text */
-.font-mono-code {
-  font-family: var(--font-mono);
-}
-
-/* Institutional Grid Background */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-.bg-radial-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, rgba(16, 185, 129, 0.03) 40%, transparent 70%);
-}
-
-.bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Glowing Border Effects */
-.glow-card {
-  position: relative;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glow-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.15), 0 8px 16px -6px rgba(0, 0, 0, 0.5);
-}
-
-.glow-card-green:hover {
-  border-color: rgba(16, 185, 129, 0.45);
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.2);
-}
-
-/* Terminal Glassmorphism */
-.glass-panel {
-  background: rgba(14, 17, 23, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-nav {
-  background: rgba(8, 9, 11, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Typewriter Blinking Cursor */
-.typewriter-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1.15em;
-  background-color: var(--accent-blue);
-  margin-left: 2px;
-  vertical-align: -0.15em;
-  animation: blink 0.9s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* Pulsing Status Beacon */
-.pulse-beacon {
-  position: relative;
-  display: inline-flex;
-}
-.pulse-beacon::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 9999px;
-  background-color: currentColor;
-  opacity: 0.75;
-  animation: beaconPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-@keyframes beaconPulse {
-  0% { transform: scale(1); opacity: 0.75; }
-  70% { transform: scale(2.4); opacity: 0; }
-  100% { transform: scale(2.4); opacity: 0; }
-}
-
-/* Timeline Components */
-.timeline-rail {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 20px;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(0, 240, 255, 0.6) 0%, rgba(16, 185, 129, 0.5) 70%, rgba(255, 255, 255, 0.05) 100%);
-}
-
-@media (min-width: 768px) {
-  .timeline-rail {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* Trading Ticker Animation */
-@keyframes tickerSlide {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-.ticker-track {
+.marquee-track {
   display: flex;
   width: max-content;
-  animation: tickerSlide 35s linear infinite;
+  animation: marqueeScroll 45s linear infinite;
 }
 
-.ticker-track:hover {
+.marquee-track:hover {
   animation-play-state: paused;
 }
 
-/* Micro-Charts & Canvas */
-canvas.chart-canvas {
+/* ==========================================================================
+   Folder Tab Stack (Signature Elena Gonci Project Presentation)
+   ========================================================================== */
+.folder-tab-header {
+  position: relative;
+  height: 44px;
   width: 100%;
-  height: 100%;
-  display: block;
 }
 
-/* Terminal Prompt Window */
-.terminal-window {
-  background: #090c10;
-  border: 1px solid #1f2937;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(0, 240, 255, 0.1);
-  overflow: hidden;
-  font-family: var(--font-mono);
+.folder-tab-curve {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 1.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1.25rem;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.terminal-header {
-  background: #111622;
-  border-bottom: 1px solid #1e2638;
-  padding: 10px 16px;
+.folder-card {
+  background: var(--bg-card-glass);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-top-right-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    0 14px 40px -8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+html.dark .folder-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 16px 45px -8px rgba(0, 0, 0, 0.5);
+}
+
+.folder-card:hover {
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    0 20px 48px -10px rgba(0, 0, 0, 0.14);
+}
+
+html.dark .folder-card:hover {
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    0 24px 50px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   Achievements Squircle Box
+   ========================================================================== */
+.squircle-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 24%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 6px 16px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.terminal-dot {
-  width: 12px;
-  height: 12px;
+.glass-widget:hover .squircle-icon-box {
+  transform: scale(1.08) rotate(3deg);
+}
+
+/* ==========================================================================
+   Analog Clock Widget Elements
+   ========================================================================== */
+.clock-face {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  display: inline-block;
+  border: 2px solid var(--border-subtle);
+  position: relative;
+  background: radial-gradient(circle, var(--bg-card) 60%, rgba(0, 0, 0, 0.03) 100%);
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.terminal-input-row {
-  display: flex;
-  align-items: baseline;
-  padding: 6px 0;
+html.dark .clock-face {
+  background: radial-gradient(circle, #151d30 60%, #0d1220 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.terminal-prompt {
-  color: #38bdf8;
-  font-weight: 600;
-  margin-right: 8px;
-  white-space: nowrap;
+.clock-center-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #06b6d4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 0 4px rgba(6, 182, 212, 0.8);
 }
 
-.terminal-field {
-  background: transparent;
-  border: none;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-  color: #f8fafc;
-  font-family: var(--font-mono);
-  width: 100%;
-  padding: 4px 8px;
-  outline: none;
-  transition: all 0.2s;
+.clock-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 999px;
 }
 
-.terminal-field:focus {
-  border-bottom: 1px solid #00f0ff;
-  background: rgba(0, 240, 255, 0.05);
+.clock-hour {
+  width: 3.5px;
+  height: 28px;
+  background: var(--text-primary);
+  z-index: 5;
 }
 
-/* Modal Drawer for Math & Case Studies */
-.modal-backdrop {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.clock-minute {
+  width: 2.5px;
+  height: 38px;
+  background: var(--text-primary);
+  opacity: 0.85;
+  z-index: 6;
 }
 
-/* KaTeX custom overrides for dark theme */
-.katex {
-  font-size: 1.1em;
-  color: #e2e8f0;
+.clock-second {
+  width: 1.5px;
+  height: 44px;
+  background: #06b6d4;
+  z-index: 7;
 }
-.katex-display {
-  margin: 0.75em 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 6px 0;
+
+/* ==========================================================================
+   Audio / Signal Wave Visualizer
+   ========================================================================== */
+@keyframes eqWave {
+  0% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1.0); }
+  100% { transform: scaleY(0.4); }
 }
+
+.audio-wave-bar {
+  width: 3.5px;
+  background: #10b981;
+  border-radius: 999px;
+  animation: eqWave 1s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+.audio-wave-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+.audio-wave-bar:nth-child(3) { animation-delay: 0.3s; height: 12px; }
+.audio-wave-bar:nth-child(4) { animation-delay: 0.45s; height: 26px; }
+.audio-wave-bar:nth-child(5) { animation-delay: 0.2s; height: 16px; }
+.audio-wave-bar:nth-child(6) { animation-delay: 0.5s; height: 22px; }
+.audio-wave-bar:nth-child(7) { animation-delay: 0.35s; height: 14px; }
+.audio-wave-bar:nth-child(8) { animation-delay: 0.1s; height: 20px; }
+.audio-wave-bar:nth-child(9) { animation-delay: 0.4s; height: 15px; }
+.audio-wave-bar:nth-child(10) { animation-delay: 0.25s; height: 24px; }
